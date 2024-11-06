@@ -1,2 +1,8 @@
 # env
 .venv/
+
+# secrets
+.secrets/
+
+# pyc files 
+*.pyc
