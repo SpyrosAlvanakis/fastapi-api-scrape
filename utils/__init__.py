@@ -6,7 +6,6 @@ from .nvidia_fintimes_scrape import scrape_nvidia_ft
 from .nvidia_stock_values_api import scrape_nvidia_stock
 from .nvidia_news_api import get_nvidia_news_via_api
 from .nvidia_originalsite_scrape import scrape_nvidia_news_site
-from .create_db import create_postgres_database
 
 # Exposing specific functions at the package level
 __all__ = [
@@ -17,6 +16,5 @@ __all__ = [
     'scrape_nvidia_ft',
     'scrape_nvidia_stock',
     'get_nvidia_news_via_api',
-    'scrape_nvidia_news_site',
-    'create_postgres_database'
+    'scrape_nvidia_news_site'
 ]

@@ -155,8 +155,8 @@ def linear_regression_analysis():
         'intercept': model.intercept_.tolist() if isinstance(model.intercept_, np.ndarray) else model.intercept_,
         'train_predictions': train_predictions.tolist(),
         'actual_train_data': y.tolist(),
-        'mse_train': mse_train,  # Mean Squared Error on the training set
-        'r_squared_train': r_squared_train  # R-squared on the training set
+        'mse_train': mse_train,  
+        'r_squared_train': r_squared_train  
     }
     return results
 

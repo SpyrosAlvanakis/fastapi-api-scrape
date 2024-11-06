@@ -47,8 +47,7 @@ def sentiment_analysis(): #TODO ADD DAY SHIFT AS A PARAMETER MAYBE
     value_sentiment_df = pd.merge(ft_nvidia_values_df, nvidia_values_df, on='date', how='outer')
     value_sentiment_df=value_sentiment_df.dropna(subset=['low'])
     value_sentiment_df['mean']=value_sentiment_df[['high','low']].mean(axis=1)
-    # value_sentiment_df['mean'] = value_sentiment_df[['high', 'low']].mean(axis=1)
-    # clean_sentiment_df=value_sentiment_df[['date','mean','low','high', 'sentiment_score']]
+
     if 'sentiment_score' in value_sentiment_df.columns:
         value_sentiment_df['sentiment_score'] = value_sentiment_df['sentiment_score'].fillna(method='ffill').fillna(method='bfill')
 
