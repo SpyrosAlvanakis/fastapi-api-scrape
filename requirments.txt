@@ -1,0 +1,17 @@
+requests
+beautifulsoup4
+pandas
+tqdm
+ipykernel
+textblob
+psycopg2
+fastapi
+uvicorn[standard]
+pydantic
+matplotlib
+sqlalchemy
+kaleido
+plotly
+yfinance
+finnhub-python
+scikit-learn
