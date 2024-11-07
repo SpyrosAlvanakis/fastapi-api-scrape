@@ -5,10 +5,14 @@ import pandas as pd
 import datetime
 import time
 from .helpers import connect_to_db
+from utils.load_secrets import load_secrets
+
 
 def get_nvidia_news_via_api(start_date, end_date):
     # Set up the Finnhub client
-    api_key = 'crqkld1r01qutsn4e5fgcrqkld1r01qutsn4e5g0'
+    secrets = load_secrets()
+    api_key = secrets.get('api_finhub')['api_key']
+
     finnhub_client = finnhub.Client(api_key=api_key)
 
     conn = connect_to_db()

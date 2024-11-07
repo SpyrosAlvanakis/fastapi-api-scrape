@@ -1,28 +1,9 @@
 from sqlalchemy import create_engine
+from utils.load_secrets import load_secrets
 import psycopg2
 import pandas as pd
 import json
 import os
-
-# ============================
-#    Load credentials   
-# ============================
-
-# Path to the credentials file
-credentials_path = os.path.join('utils', 'credentials', 'credentials.json')
-
-def load_credentials():
-    """Load database credentials from a JSON file."""
-    if not os.path.exists(credentials_path):
-        raise FileNotFoundError(f"Credentials file not found at: {credentials_path}")
-    
-    try:
-        with open(credentials_path, 'r') as f:
-            credentials = json.load(f)
-        return credentials
-    except Exception as e:
-        print(f"Error reading JSON credentials: {e}")
-        return None
 
 # ============================
 #    Helper functions
@@ -46,7 +27,9 @@ def minmax_normalize(df, column):
 # Update the database connection function to use SQLAlchemy
 def pandas_db_connection():
     """Create a SQLAlchemy engine for Pandas."""
-    credentials = load_credentials()
+    secrets = load_secrets()
+    credentials = secrets.get('database_credentials')
+    
     if not credentials:
         return None
 
@@ -68,7 +51,9 @@ def pandas_db_connection():
 
 def connect_to_db():
     """Create a psycopg2 connection for raw database access."""
-    credentials = load_credentials()
+    secrets = load_secrets()
+    credentials = secrets.get('database_credentials')
+
     if not credentials:
         return None
 

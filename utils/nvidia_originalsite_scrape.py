@@ -5,6 +5,8 @@ import psycopg2
 import time
 from textblob import TextBlob
 from .helpers import connect_to_db
+from utils.load_secrets import load_secrets
+
 
 def scrape_nvidia_news_site(start_date_str, end_date_str):
     start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
@@ -25,7 +27,9 @@ def scrape_nvidia_news_site(start_date_str, end_date_str):
     )''')
     conn.commit()
 
-    base_url = "https://nvidianews.nvidia.com/news?"
+    secrets = load_secrets()
+    nvidia_or = secrets.get('original_nvidia_site')
+    base_url = nvidia_or['site_nv_url']
     i = 1
     keep_going = True
 
@@ -50,7 +54,7 @@ def scrape_nvidia_news_site(start_date_str, end_date_str):
 
             # If the link is relative, prepend the base URL
             if link.startswith("/"):
-                link = "https://nvidianews.nvidia.com" + link
+                link = nvidia_or['relative_site_nv_url'] + link
 
             # Fetch the full article from the link and extract the text from <p> tags
             article_res = requests.get(link)

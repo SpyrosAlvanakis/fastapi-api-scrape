@@ -4,7 +4,8 @@ from datetime import datetime
 from textblob import TextBlob
 import psycopg2
 import time
-from .helpers import connect_to_db
+from utils.helpers import connect_to_db
+from utils.load_secrets import load_secrets
 
 
 def scrape_nvidia_ft(start_date_str, end_date_str):
@@ -29,8 +30,11 @@ def scrape_nvidia_ft(start_date_str, end_date_str):
     conn.commit()
 
     # Scraping logic
-    url_base = 'https://www.ft.com/search?q=NVIDIA'
-    sup = '&sort=date&isFirstView=true'
+    secrets = load_secrets()
+    ft_secrets = secrets.get('fin_times_site')
+    url_base = ft_secrets.get('site_ft')
+    sup = ft_secrets.get('ft_sup')
+    link_ft_for_href = ft_secrets.get('link_ft_for_href')
 
     i = 1
     loop_control = True
@@ -63,7 +67,7 @@ def scrape_nvidia_ft(start_date_str, end_date_str):
             title_element = news.find('a', class_='js-teaser-heading-link')
             if title_element:
                 title = title_element.get_text().strip()
-                link = f"https://www.ft.com{title_element['href']}"
+                link = link_ft_for_href + title_element['href']
             else:
                 continue  # Skip if title or link is missing
 
