@@ -39,11 +39,14 @@ Linear Regression Analysis:This method is used to attempt predictions of future 
 Correlation Assessment: This method focuses on examining the relationships between sentiment scores derived from various data sources (scraped content and API data) and stock prices. Correlations are assessed with a one-day lag to determine how sentiments from previous days' articles may influence Nvidia's stock price movements. 
 
 ## Visualization
+In the first visualization method, the rescaled sentiment analysis scores are presented in a three-axis plot alongside the dates and Nvidia stock values. Typically, the sentiment scores from the Nvidia original site are biased, leading to the observation that these scores, represented by a green line, do not show a clear correlation with Nvidia’s stock value, even when adjusted for shifts of several days. Similarly, the sentiment scores from the Financial Times, depicted by a grey line, fail to demonstrate any correlation.
+
+Intriguingly, the sentiment scores from Finhub, represented by a red line and calculated as mean values from a large number of article sentiment scores, display a shifted similarity in direction with the Nvidia stock value. The shift varies between 1-7 days and does not move analogously with the stock value, suggesting potential avenues for future research.
+
 ![alt text](image.png)
 
+in the second visualization the nvidia,apple and amd tock values illustrates to have a stable difference between them and generally moving similarly during the time range from the collected data. The timerange of the data is for 2 months only, from 01/08/2024 to 01/10/2024.
 ![alt text](image-1.png)
-
-## Further ideas
 
 ## Warning
 In order to run the code locally, a .secrets folder is required with a keys.toml file, which contains all the necessary information, from links to local database credentials. The keys.toml file is structured as follows:
