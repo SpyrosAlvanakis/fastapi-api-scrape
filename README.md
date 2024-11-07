@@ -53,10 +53,10 @@ In the second visualization the nvidia,apple and amd tock values illustrates to 
 ## Warning
 In order to run the code locally, a .secrets folder is required with a keys.toml file, which contains all the necessary information, from links to local database credentials. The keys.toml file is structured as follows:
 
-[database_credentials]
-[original_nvidia_site]
-[fin_times_site]
-[api_finhub]
+    [database_credentials]
+    [original_nvidia_site]
+    [fin_times_site]
+    [api_finhub]
 
 Each section includes the relevant links (main or supportive for nested articles) and credentials.
 
