@@ -45,7 +45,9 @@ Intriguingly, the sentiment scores from Finhub, represented by a red line and ca
 
 ![alt text](image.png)
 
+
 in the second visualization the nvidia,apple and amd tock values illustrates to have a stable difference between them and generally moving similarly during the time range from the collected data. The timerange of the data is for 2 months only, from 01/08/2024 to 01/10/2024.
+
 ![alt text](image-1.png)
 
 ## Warning
